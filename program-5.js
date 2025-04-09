@@ -11,3 +11,31 @@ Given an integer array flowerbed containing 0's and 1's, where 0 means empty and
 // Example 2:
 // Input: flowerbed = [1,0,0,0,1], n = 2
 // Output: false
+
+let  flowerbed1 = [1,0,0,0,0,1,1];
+let  flowerbed2 = [1,0,0,0,1];
+
+
+function flowerPlace(flowerbed, n) {
+  let count = 0;
+
+  for (let i = 0; i < flowerbed.length; i++) {
+      if (flowerbed[i] === 0) {
+          let emptyLeft = (i === 0) || (flowerbed[i - 1] === 0);
+          let emptyRight = (i === flowerbed.length - 1) || (flowerbed[i + 1] === 0);
+
+          if (emptyLeft && emptyRight) {
+              flowerbed[i] = 1; 
+              count++;          
+              if (count >= n) {
+                  return true;  
+              }
+          }
+      }
+  }
+
+  return count >= n; 
+}
+
+console.log(flowerPlace(flowerbed1, 1)); 
+console.log(flowerPlace(flowerbed2, 2)); 
