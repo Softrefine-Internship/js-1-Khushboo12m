@@ -5,25 +5,26 @@
 
 
 function MostFrequent(arr) {
+  let freqMap = {};
   let maxCount = 0;
-  let mostFrequentItem;
 
-  for (let i = 0; i < arr.length; i++) {
-    let count = 0;
-
-    for (let j = 0; j < arr.length; j++) {
-      if (arr[i] === arr[j]) {
-        count++;
-      }
-    }
-
-    if (count > maxCount) {
-      maxCount = count;
-      mostFrequentItem = arr[i];
+  for (let item of arr) {
+    freqMap[item] = (freqMap[item] || 0) + 1;
+    if (freqMap[item] > maxCount) {
+      maxCount = freqMap[item];
     }
   }
 
-  console.log(mostFrequentItem, `"${maxCount} times"`);
+  let mostFrequentItems = [];
+  for (let item in freqMap) {
+    if (freqMap[item] === maxCount) {
+      mostFrequentItems.push(item);
+    }
+  }
+
+  mostFrequentItems.forEach(item => {
+    console.log(item, `"${maxCount} times"`);
+  });
 }
 
 let sampleArray = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];

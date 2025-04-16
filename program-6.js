@@ -8,34 +8,35 @@
 
 
 
- let arr1 = [1, 2, 3, 4, 5, 6];
- let arr2 = [3, 4, 5, 7];
+let arr1 = [1, 2, 3, 4, 5, 5, 6];
+let arr2 = [3, 4, 5, 7];
 
 function removeDuplicate(arr1, arr2) {
   let merged = [];
 
-for (let i = 0; i < arr1.length; i++) {
-  merged[merged.length] = arr1[i];
-}
-
-for (let i = 0; i < arr2.length; i++) {
-  let exists = false;
-
-  for (let j = 0; j < merged.length; j++) {
-    if (arr2[i] === merged[j]) {
-      exists = true;
-      break;
-    }
+  for (let i = 0; i < arr1.length; i++) {
+    merged[merged.length] = arr1[i];
   }
 
-  if (!exists) {
+  for (let i = 0; i < arr2.length; i++) {
     merged[merged.length] = arr2[i];
   }
 
-}
-console.log(merged);
+  let unique = [];
+  for (let i = 0; i < merged.length; i++) {
+    let exists = false;
+    for (let j = 0; j < unique.length; j++) {
+      if (merged[i] === unique[j]) {
+        exists = true;
+        break;
+      }
+    }
+    if (!exists) {
+      unique[unique.length] = merged[i];
+    }
+  }
 
+  console.log(unique);
 }
 
 removeDuplicate(arr1,arr2);
-

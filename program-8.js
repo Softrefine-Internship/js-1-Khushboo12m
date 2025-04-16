@@ -5,7 +5,8 @@
 
 
 
-function insertDashes(numberStr) {
+function insertDashes(input) {
+  let numberStr = input.toString();
   let result = "";
 
   for (let i = 0; i < numberStr.length; i++) {
@@ -23,6 +24,8 @@ function insertDashes(numberStr) {
   return result;
 }
 
-let input = "025468";
-let output = insertDashes(input);
-console.log(output);
+let input1 = "025468";     // string
+let input2 = 25420168;     // number
+console.log(insertDashes(input1));
+console.log(insertDashes(input2)); 
+
